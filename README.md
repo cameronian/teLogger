@@ -96,7 +96,7 @@ log.error "Stepping stopped in the middle"
 E, [2020-04-23T16:19:18.548893 #23173] ERROR -- [init] : Stepping stopped in the middle  # sample output
 ```
 
-Refers to spec/teLogger\_spec.rb for details info
+Refers to spec/tLogger\_spec.rb for details usage
 
 
 ### Filter Log Messages
