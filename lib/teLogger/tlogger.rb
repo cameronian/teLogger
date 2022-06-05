@@ -145,25 +145,6 @@ module TeLogger
     alias_method :all_on_except, :on_all_tags_except
 
     # 
-    # :method: clear_exceptions
-    #
-    # Clear the exception list. All exampted tags given either by #off_all_tags_except or #on_all_tags_except 
-    # shall be reset
-    #
-    def clear_exceptions
-      @exception.clear
-    end
-
-    # 
-    # :method: remove_from_exception
-    #
-    # Remote a set of tags from the exception list
-    #
-    def remove_from_exception(*tags)
-      @exception.delete_if { |e| tags.include?(e) }
-    end
-
-    # 
     # :method: method_missing
     #
     # This is where the delegation to the Logger object happen or no_method_exception shall be thrown
@@ -320,34 +301,6 @@ module TeLogger
       @include_caller = true
     end
 
-    ## detect if the prompt should be to env or file
-    #def self.init(out = STDOUT)
-    #  if is_dev?
-    #    Tlogger.new(out) 
-    #  else
-    #    path = ENV["TLOGGER_FILE_PATH"]
-    #    if path.nil? or path.empty?
-    #      Tlogger.new(nil)
-    #    else
-    #      path = [path] if not path.is_a?(Array)
-    #      Tlogger.new(*path)
-    #    end
-    #  end
-    #end
-
-    #def self.set_dev_mode
-    #  ENV["TLOGGER_MODE"] = "dev"
-    #end
-
-    #def self.set_production_mode
-    #  ENV.delete("TLOGGER_MODE")
-    #end
-
-    #def self.is_dev?
-    #  ENV.keys.include?("TLOGGER_MODE") and ENV["TLOGGER_MODE"].downcase == "dev"
-    #end
-
-
     private
     def format_message(key)
       # returning args array
@@ -405,6 +358,25 @@ module TeLogger
       msg
       
     end # find_caller
+
+    # 
+    # :method: clear_exceptions
+    #
+    # Clear the exception list. All exampted tags given either by #off_all_tags_except or #on_all_tags_except 
+    # shall be reset
+    #
+    def clear_exceptions
+      @exception.clear
+    end
+
+    # 
+    # :method: remove_from_exception
+    #
+    # Remove a set of tags from the exception list
+    #
+    def remove_from_exception(*tags)
+      @exception.delete_if { |e| tags.include?(e) }
+    end
 
 
   end
