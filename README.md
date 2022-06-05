@@ -51,11 +51,11 @@ Since TeLogger is just wrapped around Ruby Logger, it is initiated like Logger:
 require 'teLogger'
 
 # Initiate without parameters shall print out the log to STDOUT
-log = teLogger::Tlogger.new
+log = TeLogger::Tlogger.new
 
 # Alternatively, this initiate logging with log file
 # The parameter is directly pass to Ruby Logger.new method
-log = teLogger::Tlogger.new('app.log',10,1024000)
+log = TeLogger::Tlogger.new('app.log',10,1024000)
 
 # default tag for this logger instance / session
 log.tag = "init"
